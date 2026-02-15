@@ -8,7 +8,7 @@ const Cart = () => {
     // console.log(cart);
 
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
+        <div className="p-6 bg-gray-100 ">
             <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-6">
 
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">
@@ -36,13 +36,25 @@ const Cart = () => {
                                 <div className="flex items-center gap-4">
 
                                     <div className="flex items-center border rounded-lg overflow-hidden">
-                                        <button className="px-3 py-1 bg-gray-200 hover:bg-gray-300">
+                                        <button onClick={() => {
+                                            dispatch({
+                                                type: "Subtract_FROM_CART",
+                                                payload: item.id
+                                            })
+                                        }}
+                                            className="px-3 py-1 bg-gray-200 hover:bg-gray-300">
                                             -
                                         </button>
 
                                         <p className="px-4">{item.quantity || 1}</p>
 
-                                        <button className="px-3 py-1 bg-gray-200 hover:bg-gray-300">
+                                        <button onClick={() => {
+                                            dispatch({
+                                                type: "ADD_IN_CART", payload: item.id
+                                            })
+                                        }}
+
+                                            className="px-3 py-1 bg-gray-200 hover:bg-gray-300">
                                             +
                                         </button>
                                     </div>
